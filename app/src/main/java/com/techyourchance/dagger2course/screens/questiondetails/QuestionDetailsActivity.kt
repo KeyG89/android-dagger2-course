@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.techyourchance.dagger2course.questions.FetchQuestionsDetailsUseCase
+import com.techyourchance.dagger2course.screens.common.ScreensNavigator
 import com.techyourchance.dagger2course.screens.common.dialogs.DialogsNavigator
 import kotlinx.coroutines.*
 
@@ -18,6 +19,8 @@ class QuestionDetailsActivity : AppCompatActivity(), QuestionDetailsViewMvc.List
     private lateinit var fetchQuestionsDetailsUseCase: FetchQuestionsDetailsUseCase
 
     private lateinit var dialogsNavigator: DialogsNavigator
+
+    private lateinit var screensNavigator: ScreensNavigator
 
     private lateinit var questionId: String
 
@@ -34,6 +37,8 @@ class QuestionDetailsActivity : AppCompatActivity(), QuestionDetailsViewMvc.List
         fetchQuestionsDetailsUseCase = FetchQuestionsDetailsUseCase()
 
         dialogsNavigator = DialogsNavigator(supportFragmentManager)
+
+        screensNavigator = ScreensNavigator(this)
     }
 
     override fun onStart() {
@@ -74,7 +79,7 @@ class QuestionDetailsActivity : AppCompatActivity(), QuestionDetailsViewMvc.List
     }
 
     override fun onBackClicked() {
-        super.onBackPressed()
+        screensNavigator.navigateBack()
     }
 
     companion object {
