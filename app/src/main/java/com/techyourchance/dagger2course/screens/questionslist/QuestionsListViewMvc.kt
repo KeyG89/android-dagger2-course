@@ -26,13 +26,14 @@ class QuestionsListViewMvc(
         }
     }
 
+    val rootView: View = layoutInflater.inflate(R.layout.layout_questions_list, parent, false)
+
     private val context: Context get() = rootView.context
 
     private val swipeRefresh: SwipeRefreshLayout
     private val recyclerView: RecyclerView
     private val questionsAdapter: QuestionsAdapter
 
-    val rootView: View = layoutInflater.inflate(R.layout.layout_questions_list, parent, false)
 
     private val listeners = HashSet<Listener>()
 
@@ -70,7 +71,7 @@ class QuestionsListViewMvc(
         }
     }
 
-    fun <T : View?> findViewById(@IdRes id: Int): T {
+    private fun <T : View?> findViewById(@IdRes id: Int): T {
         return rootView.findViewById<T>(id)
     }
 

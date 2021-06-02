@@ -40,7 +40,7 @@ class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener
 
     override fun onStart() {
         super.onStart()
-        viewMvc.registerListener((this))
+        viewMvc.registerListener(this)
         if (!isDataLoaded) {
             fetchQuestions()
         }
@@ -49,7 +49,7 @@ class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener
     override fun onStop() {
         super.onStop()
         coroutineScope.coroutineContext.cancelChildren()
-        viewMvc.unRegisterListener((this))
+        viewMvc.unRegisterListener(this)
 
     }
 
@@ -88,6 +88,4 @@ class QuestionsListActivity : AppCompatActivity(), QuestionsListViewMvc.Listener
     override fun onQuestionClicked(clickedQuestion: Question) {
         QuestionDetailsActivity.start(this, clickedQuestion.id)
     }
-
-
 }
