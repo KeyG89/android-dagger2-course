@@ -4,14 +4,14 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
-import androidx.appcompat.app.AppCompatActivity
 import com.techyourchance.dagger2course.MyApplication
 import com.techyourchance.dagger2course.questions.FetchQuestionsDetailsUseCase
 import com.techyourchance.dagger2course.screens.common.ScreensNavigator
+import com.techyourchance.dagger2course.screens.common.activities.BaseActivity
 import com.techyourchance.dagger2course.screens.common.dialogs.DialogsNavigator
 import kotlinx.coroutines.*
 
-class QuestionDetailsActivity : AppCompatActivity(), QuestionDetailsViewMvc.Listener {
+class QuestionDetailsActivity : BaseActivity(), QuestionDetailsViewMvc.Listener {
 
     private val coroutineScope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
 
@@ -35,7 +35,7 @@ class QuestionDetailsActivity : AppCompatActivity(), QuestionDetailsViewMvc.List
         // retrieve question ID passed from outside
         questionId = intent.extras!!.getString(EXTRA_QUESTION_ID)!!
 
-        fetchQuestionsDetailsUseCase = (application as MyApplication).fetchQuestionsDetailsUseCase
+        fetchQuestionsDetailsUseCase = compositionRoot.fetchQuestionsDetailsUseCase
 
         dialogsNavigator = DialogsNavigator(supportFragmentManager)
 
