@@ -1,5 +1,6 @@
 package com.techyourchance.dagger2course.common.composition
 
+import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import com.techyourchance.dagger2course.questions.FetchQuestionsDetailsUseCase
 import com.techyourchance.dagger2course.questions.FetchQuestionsUseCase
@@ -15,6 +16,8 @@ class ActivityCompositionRoot(
     val screensNavigator by lazy {
         ScreensNavigator(activity)
     }
+
+    private val layoutInflater get() = LayoutInflater.from(activity)
 
     private val fragmentManager get() = activity.supportFragmentManager
 
