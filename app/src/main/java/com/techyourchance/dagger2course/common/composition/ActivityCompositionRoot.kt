@@ -7,11 +7,14 @@ import com.techyourchance.dagger2course.questions.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.screens.common.ScreensNavigator
 import com.techyourchance.dagger2course.screens.common.activities.BaseActivity
 import com.techyourchance.dagger2course.screens.common.dialogs.DialogsNavigator
+import com.techyourchance.dagger2course.screens.common.viewmvc.ViewMvcFactory
 
 class ActivityCompositionRoot(
         private val activity: AppCompatActivity,
         private val appCompositionRoot: AppCompositionRoot
 ) {
+
+    val viewMvcFactory get() = ViewMvcFactory(layoutInflater)
 
     val screensNavigator by lazy {
         ScreensNavigator(activity)
