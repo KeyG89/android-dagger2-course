@@ -4,8 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
-import android.view.LayoutInflater
-import com.techyourchance.dagger2course.common.di.Service
 import com.techyourchance.dagger2course.questions.FetchQuestionsDetailsUseCase
 import com.techyourchance.dagger2course.screens.common.ScreensNavigator
 import com.techyourchance.dagger2course.screens.common.activities.BaseActivity
