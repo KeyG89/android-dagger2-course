@@ -1,6 +1,7 @@
 package com.techyourchance.dagger2course.screens.viewmodel
 
 import androidx.lifecycle.*
+import com.techyourchance.dagger2course.questions.FetchQuestionsDetailsUseCase
 import com.techyourchance.dagger2course.questions.FetchQuestionsUseCase
 import com.techyourchance.dagger2course.questions.Question
 import kotlinx.coroutines.launch
@@ -26,10 +27,10 @@ class MyViewModel @Inject constructor(
     }
 
     class Factory @Inject constructor(
-            private val fetchQuestionsUseCaseProvider: Provider<FetchQuestionsUseCase>
+            private val myViewModelProvider: Provider<MyViewModel>
     ) : ViewModelProvider.Factory {
         override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-            return MyViewModel(fetchQuestionsUseCaseProvider.get()) as T
+            return myViewModelProvider.get() as T
         }
 
     }
