@@ -10,12 +10,13 @@ import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 class AppModule {
 
-    @AppScope
+    @Singleton
     @Provides
     @Retrofit1
     fun retrofit1(urlProvider: UrlProvider): Retrofit {
@@ -25,7 +26,7 @@ class AppModule {
             .build()
     }
 
-    @AppScope
+    @Singleton
     @Provides
     @Retrofit2
     fun retrofit2(urlProvider: UrlProvider): Retrofit {
@@ -35,11 +36,11 @@ class AppModule {
             .build()
     }
 
-    @AppScope
+    @Singleton
     @Provides
     fun urlProvider() = UrlProvider()
 
-    @AppScope
+    @Singleton
     @Provides
     fun stackoverflowApi(@Retrofit1 retrofit: Retrofit) =
         retrofit.create(StackoverflowApi::class.java)
