@@ -3,6 +3,7 @@ package com.techyourchance.dagger2course.screens.common
 import androidx.appcompat.app.AppCompatActivity
 import com.techyourchance.dagger2course.screens.questiondetails.QuestionDetailsActivity
 import com.techyourchance.dagger2course.screens.viewmodel.ViewModelActivity
+import dagger.hilt.android.scopes.ActivityScoped
 import javax.inject.Inject
 
 class ScreensNavigatorIml @Inject constructor(private val activity: AppCompatActivity) : ScreensNavigator {

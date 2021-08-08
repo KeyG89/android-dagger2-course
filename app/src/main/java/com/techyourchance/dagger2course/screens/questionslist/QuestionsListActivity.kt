@@ -11,17 +11,13 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class QuestionsListActivity : BaseActivity() {
 
-    @Inject
-    lateinit var screensNavigator: ScreensNavigator
-
     override fun onCreate(savedInstanceState: Bundle?) {
-        Log.e("QuestionsListActivity", "$screensNavigator")
         super.onCreate(savedInstanceState)
         setContentView(R.layout.layout_frame)
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().add(
-                    R.id.frame_content, QuestionsListFragment()
+                R.id.frame_content, QuestionsListFragment()
             ).commit()
         }
     }
