@@ -1,17 +1,11 @@
 package com.techyourchance.dagger2course
 
 import android.app.Application
-import com.techyourchance.dagger2course.common.di.app.AppComponent
-import com.techyourchance.dagger2course.common.di.app.AppModule
-import com.techyourchance.dagger2course.common.di.app.DaggerAppComponent
+import dagger.hilt.android.HiltAndroidApp
 
-class MyApplication: Application() {
+@HiltAndroidApp
+class MyApplication : Application() {
 
-    public val appComponent: AppComponent by lazy {
-        DaggerAppComponent.builder()
-                .appModule(AppModule(this))
-                .build()
-    }
 
     override fun onCreate() {
         super.onCreate()
